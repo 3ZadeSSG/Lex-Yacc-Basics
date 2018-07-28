@@ -1,22 +1,22 @@
 %{
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include "numeric.h"
+#include "numeric.h" //definition of symbol table is here
+#include <stdio.h> //for displaying outout in console aka terminal
+#include <stdlib.h>
+#include <string.h>
+int yylex(); //will be fired off automaticaly by yacc to read lexeme using lex
 void yyerror(char*);
-int yylex();
-char *token_string=NULL;
-int tuple_index=0;
-int temporary_generated=0;
-void print_imc_code(void);
+char *new_temp(); //new tuple generator
+void print_imc_code();
 void imc_code_generator(char*,char*,char*,char*);
-extern struct symtab *symbol_lookup(char*);
-char *new_temp();
+extern struct symtab *symbol_lookup(char*); 
+char *token_string=NULL; //tokenized string 
+int tuple_index=0; //number of quadruple entries
+int temporary_generated=0; //temporary generated tuple count
 %}
 %union{
  char *number;
- char operator;
- char parenthesis;
+ char *operator;
+ char *parenthesis;
  struct symtab *symp;
 }
 %token <number> NUM
@@ -27,44 +27,33 @@ char *new_temp();
 %nonassoc UMINUS
 %type <number> E F G H I
 %%
-/*
-Grammar with augmented production:-
-SL-> SL S | S
-S-> ID=E|E
-E-> E-F|F
-F-> F+G|G
-G-> G*H|H
-H-> H/I|I
-I-> (E)|ID|NUM
-*/
-SL: SL S '\n' {
- printf("\nTokenize String: %s\n",token_string);
- print_imc_code();
+/*if augmented priduction reached then print tokenized string and 3 address code*/
+SL: S '\n' {
+ printf("Tokenized String: %s\n",token_string);
  token_string=NULL;
- tuple_index=0;
- temporary_generated=0;
+ print_imc_code();
+ tuple_index=temporary_generated=0;
 }
-| S '\n' {
- printf("\nTokenized String: %s\n",token_string);
- print_imc_code();
+| SL S '\n'{
+ printf("Tokenized String: %s\n",token_string);
  token_string=NULL;
- tuple_index=0;
- temporary_generated=0;
+ print_imc_code();
+ tuple_index=temporary_generated=0;
 }
 ;
-S: ID ASSIGN E {
-  imc_code_generator($1->name,$3,"","");
-  $1->value=$3;
+S: ID ASSIGN E{
+ imc_code_generator($1->name,$3,"","");
+ $1->value=$3;
 }
 | E
 ;
-E: E SUB F {
- $$=new_temp();
+E: E SUB F{
+ $$=new_temp(); 
  imc_code_generator($$,$1,"-",$3);
 }
 | F
 ;
-F: F ADD G {
+F: F ADD G{
  $$=new_temp();
  imc_code_generator($$,$1,"+",$3);
 }
@@ -77,57 +66,50 @@ G: G MUL H {
 | H
 ;
 H: H DIV I {
- char *temp=strdup($3);
- if(0==atof(temp) && temp[0]!='0'){
-   temp=symbol_lookup(temp)->value;
- }
- if(!temp||0==atof(temp)){ 
-   yyerror("Cannot divide by zero!");
-   exit(1);
- }
  $$=new_temp();
  imc_code_generator($$,$1,"/",$3);
 }
 | I
 ;
 I: LEFT_P E RIGHT_P {
-  $$=strdup($2);
+ strcpy($$,$2);
 }
-| ID {
-  $$=$1->name;
+| SUB E %prec UMINUS{
+/* $$=strdup("-");
+ $$=strcat($$,$2);*/
+ strcpy($$,"-");
+ strcat($$,$2);
 }
-| SUB E %prec UMINUS {
- $$=strdup("-");
- $$=strcat($$,$2);
+| ID{
+ $$=$1->name;
 }
 | NUM
 ;
 %%
-void yyerror(char *s){ 
- fprintf(stderr,"%s\n",s); //will go to file handle, to be printed under stderr lib function
-}
-
 char *new_temp(){
- char *temp=(char*)malloc(sizeof(20));
- sprintf(temp,"t%d",++temporary_generated); //sprintf() is used to store the string in buffer instead of output to console aka terminal
+ char *temp=(char*)malloc(sizeof(char)*21);
+ sprintf(temp,"t%d",++temporary_generated);
  return temp;
 }
-
-void imc_code_generator(char *result,char *operand_left,char *operators,char *operand_right){
- tuples[tuple_index].result=result;
- tuples[tuple_index].operators=operators;
- tuples[tuple_index].operand_left=operand_left;
- tuples[tuple_index].operand_right=operand_right;
- tuple_index++;
-}
-void print_imc_code(void){
- int i=0;
- for(i=0;i<tuple_index;i++){
-  printf("\n%s = %s %s %s",tuples[i].result,tuples[i].operand_left,tuples[i].operators,tuples[i].operand_right);
+void print_imc_code(){
+ int index=0;
+ printf("Intermediate code: \n");
+ for(index=0;index<tuple_index;index++){
+  printf("%s = %s %s %s\n",tuples[index].result,tuples[index].operand_left,tuples[index].operators,tuples[index].operand_right);
  }
  printf("\n");
 }
-int main(void){
+void imc_code_generator(char *result,char *operand_left,char *operators,char *operand_right){
+ tuples[tuple_index].result=result;
+ tuples[tuple_index].operand_left=operand_left;
+ tuples[tuple_index].operand_right=operand_right;
+ tuples[tuple_index].operators=operators;
+ tuple_index++;
+}
+void yyerror(char *s){
+ fprintf(stderr,"%s\n",s); 
+}
+int main(int *argc,char **argv){
  yyparse();
  return 0;
 }

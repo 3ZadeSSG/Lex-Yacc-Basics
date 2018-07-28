@@ -64,19 +64,19 @@
 /* Copy the first part of user declarations.  */
 #line 1 "numeric.y" /* yacc.c:339  */
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include "numeric.h"
+#include "numeric.h" //definition of symbol table is here
+#include <stdio.h> //for displaying outout in console aka terminal
+#include <stdlib.h>
+#include <string.h>
+int yylex(); //will be fired off automaticaly by yacc to read lexeme using lex
 void yyerror(char*);
-int yylex();
-char *token_string=NULL;
-int tuple_index=0;
-int temporary_generated=0;
-void print_imc_code(void);
+char *new_temp(); //new tuple generator
+void print_imc_code();
 void imc_code_generator(char*,char*,char*,char*);
-extern struct symtab *symbol_lookup(char*);
-char *new_temp();
+extern struct symtab *symbol_lookup(char*); 
+char *token_string=NULL; //tokenized string 
+int tuple_index=0; //number of quadruple entries
+int temporary_generated=0; //temporary generated tuple count
 
 #line 82 "y.tab.c" /* yacc.c:339  */
 
@@ -145,8 +145,8 @@ union YYSTYPE
 #line 16 "numeric.y" /* yacc.c:355  */
 
  char *number;
- char operator;
- char parenthesis;
+ char *operator;
+ char *parenthesis;
  struct symtab *symp;
 
 #line 153 "y.tab.c" /* yacc.c:355  */
@@ -464,8 +464,8 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    40,    40,    47,    55,    59,    61,    65,    67,    71,
-      73,    77,    79,    91,    93,    96,    99,   103
+       0,    31,    31,    37,    44,    48,    50,    54,    56,    60,
+      62,    66,    68,    72,    74,    77,    83,    86
 };
 #endif
 
@@ -514,9 +514,9 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,    17,     0,     0,    15,     0,     0,     5,     7,     9,
-      11,    13,    15,    16,     0,     0,     1,     0,     3,     0,
-       0,     0,     0,    14,     4,     2,     6,     8,    10,    12
+       0,    17,     0,     0,    16,     0,     0,     5,     7,     9,
+      11,    13,    16,    15,     0,     0,     1,     0,     2,     0,
+       0,     0,     0,    14,     4,     3,     6,     8,    10,    12
 };
 
   /* YYPGOTO[NTERM-NUM].  */
@@ -569,8 +569,8 @@ static const yytype_uint8 yyr1[] =
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     3,     2,     3,     1,     3,     1,     3,     1,
-       3,     1,     3,     1,     3,     1,     2,     1
+       0,     2,     2,     3,     3,     1,     3,     1,     3,     1,
+       3,     1,     3,     1,     3,     2,     1,     1
 };
 
 
@@ -1247,109 +1247,101 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 40 "numeric.y" /* yacc.c:1646  */
+#line 31 "numeric.y" /* yacc.c:1646  */
     {
- printf("\nTokenize String: %s\n",token_string);
- print_imc_code();
+ printf("Tokenized String: %s\n",token_string);
  token_string=NULL;
- tuple_index=0;
- temporary_generated=0;
+ print_imc_code();
+ tuple_index=temporary_generated=0;
 }
-#line 1259 "y.tab.c" /* yacc.c:1646  */
+#line 1258 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 47 "numeric.y" /* yacc.c:1646  */
+#line 37 "numeric.y" /* yacc.c:1646  */
     {
- printf("\nTokenized String: %s\n",token_string);
- print_imc_code();
+ printf("Tokenized String: %s\n",token_string);
  token_string=NULL;
- tuple_index=0;
- temporary_generated=0;
+ print_imc_code();
+ tuple_index=temporary_generated=0;
 }
-#line 1271 "y.tab.c" /* yacc.c:1646  */
+#line 1269 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 55 "numeric.y" /* yacc.c:1646  */
+#line 44 "numeric.y" /* yacc.c:1646  */
     {
-  imc_code_generator((yyvsp[-2].symp)->name,(yyvsp[0].number),"","");
-  (yyvsp[-2].symp)->value=(yyvsp[0].number);
+ imc_code_generator((yyvsp[-2].symp)->name,(yyvsp[0].number),"","");
+ (yyvsp[-2].symp)->value=(yyvsp[0].number);
 }
-#line 1280 "y.tab.c" /* yacc.c:1646  */
+#line 1278 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 61 "numeric.y" /* yacc.c:1646  */
+#line 50 "numeric.y" /* yacc.c:1646  */
     {
- (yyval.number)=new_temp();
+ (yyval.number)=new_temp(); 
  imc_code_generator((yyval.number),(yyvsp[-2].number),"-",(yyvsp[0].number));
 }
-#line 1289 "y.tab.c" /* yacc.c:1646  */
+#line 1287 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 67 "numeric.y" /* yacc.c:1646  */
+#line 56 "numeric.y" /* yacc.c:1646  */
     {
  (yyval.number)=new_temp();
  imc_code_generator((yyval.number),(yyvsp[-2].number),"+",(yyvsp[0].number));
 }
-#line 1298 "y.tab.c" /* yacc.c:1646  */
+#line 1296 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 73 "numeric.y" /* yacc.c:1646  */
+#line 62 "numeric.y" /* yacc.c:1646  */
     {
  (yyval.number)=new_temp();
  imc_code_generator((yyval.number),(yyvsp[-2].number),"*",(yyvsp[0].number));
 }
-#line 1307 "y.tab.c" /* yacc.c:1646  */
+#line 1305 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 79 "numeric.y" /* yacc.c:1646  */
+#line 68 "numeric.y" /* yacc.c:1646  */
     {
- char *temp=strdup((yyvsp[0].number));
- if(0==atof(temp) && temp[0]!='0'){
-   temp=symbol_lookup(temp)->value;
- }
- if(!temp||0==atof(temp)){ 
-   yyerror("Cannot divide by zero!");
-   exit(1);
- }
  (yyval.number)=new_temp();
  imc_code_generator((yyval.number),(yyvsp[-2].number),"/",(yyvsp[0].number));
 }
-#line 1324 "y.tab.c" /* yacc.c:1646  */
+#line 1314 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 93 "numeric.y" /* yacc.c:1646  */
+#line 74 "numeric.y" /* yacc.c:1646  */
     {
-  (yyval.number)=strdup((yyvsp[-1].number));
+ strcpy((yyval.number),(yyvsp[-1].number));
 }
-#line 1332 "y.tab.c" /* yacc.c:1646  */
+#line 1322 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 96 "numeric.y" /* yacc.c:1646  */
+#line 77 "numeric.y" /* yacc.c:1646  */
     {
-  (yyval.number)=(yyvsp[0].symp)->name;
+/* $$=strdup("-");
+ $$=strcat($$,$2);*/
+ strcpy((yyval.number),"-");
+ strcat((yyval.number),(yyvsp[0].number));
 }
-#line 1340 "y.tab.c" /* yacc.c:1646  */
+#line 1333 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 99 "numeric.y" /* yacc.c:1646  */
+#line 83 "numeric.y" /* yacc.c:1646  */
     {
- (yyval.number)=strdup("-");
- (yyval.number)=strcat((yyval.number),(yyvsp[0].number));
+ (yyval.number)=(yyvsp[0].symp)->name;
 }
-#line 1349 "y.tab.c" /* yacc.c:1646  */
+#line 1341 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1353 "y.tab.c" /* yacc.c:1646  */
+#line 1345 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1577,33 +1569,32 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 105 "numeric.y" /* yacc.c:1906  */
-
-void yyerror(char *s){ 
- fprintf(stderr,"%s\n",s); //will go to file handle, to be printed under stderr lib function
-}
+#line 88 "numeric.y" /* yacc.c:1906  */
 
 char *new_temp(){
- char *temp=(char*)malloc(sizeof(20));
- sprintf(temp,"t%d",++temporary_generated); //sprintf() is used to store the string in buffer instead of output to console aka terminal
+ char *temp=(char*)malloc(sizeof(char)*21);
+ sprintf(temp,"t%d",++temporary_generated);
  return temp;
 }
-
-void imc_code_generator(char *result,char *operand_left,char *operators,char *operand_right){
- tuples[tuple_index].result=result;
- tuples[tuple_index].operators=operators;
- tuples[tuple_index].operand_left=operand_left;
- tuples[tuple_index].operand_right=operand_right;
- tuple_index++;
-}
-void print_imc_code(void){
- int i=0;
- for(i=0;i<tuple_index;i++){
-  printf("\n%s = %s %s %s",tuples[i].result,tuples[i].operand_left,tuples[i].operators,tuples[i].operand_right);
+void print_imc_code(){
+ int index=0;
+ printf("Intermediate code: \n");
+ for(index=0;index<tuple_index;index++){
+  printf("%s = %s %s %s\n",tuples[index].result,tuples[index].operand_left,tuples[index].operators,tuples[index].operand_right);
  }
  printf("\n");
 }
-int main(void){
+void imc_code_generator(char *result,char *operand_left,char *operators,char *operand_right){
+ tuples[tuple_index].result=result;
+ tuples[tuple_index].operand_left=operand_left;
+ tuples[tuple_index].operand_right=operand_right;
+ tuples[tuple_index].operators=operators;
+ tuple_index++;
+}
+void yyerror(char *s){
+ fprintf(stderr,"%s\n",s); 
+}
+int main(int *argc,char **argv){
  yyparse();
  return 0;
 }

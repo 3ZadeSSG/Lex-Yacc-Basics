@@ -77,8 +77,8 @@ union YYSTYPE
 #line 16 "numeric.y" /* yacc.c:1909  */
 
  char *number;
- char operator;
- char parenthesis;
+ char *operator;
+ char *parenthesis;
  struct symtab *symp;
 
 #line 85 "y.tab.h" /* yacc.c:1909  */
