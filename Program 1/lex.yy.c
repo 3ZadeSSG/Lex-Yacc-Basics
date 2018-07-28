@@ -375,8 +375,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 13
-#define YY_END_OF_BUFFER 14
+#define YY_NUM_RULES 11
+#define YY_END_OF_BUFFER 12
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -384,11 +384,10 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[25] =
+static yyconst flex_int16_t yy_accept[21] =
     {   0,
-        0,    0,   14,   12,   11,   10,    7,    8,    5,    3,
-        4,   12,    6,    1,    9,    2,    1,    0,    1,    2,
-        0,    0,    1,    0
+        0,    0,   12,   10,    9,    8,    6,    7,    5,    4,
+        4,    4,    4,    4,    4,    4,    2,    1,    3,    0
     } ;
 
 static yyconst YY_CHAR yy_ec[256] =
@@ -397,16 +396,16 @@ static yyconst YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    1,    1,    1,    4,    1,    1,    1,    5,
-        6,    7,    8,    1,    9,   10,   11,   12,   12,   12,
-       12,   12,   12,   12,   12,   12,   12,    1,    1,    1,
-       13,    1,    1,    1,   14,   14,   14,   14,   15,   14,
-       14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-       14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-        1,    1,    1,    1,    1,    1,   14,   14,   14,   14,
+        6,    1,    1,    1,    1,    1,    1,    7,    7,    7,
+        7,    7,    7,    7,    7,    7,    7,    1,    1,    1,
+        8,    1,    1,    1,    9,   10,   10,   11,   10,   10,
+       10,   10,   10,   10,   10,   10,   10,   12,   13,   10,
+       10,   14,   10,   15,   10,   10,   10,   10,   10,   10,
+        1,    1,    1,    1,    1,    1,   10,   10,   10,   10,
 
-       15,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-       14,   14,   14,   14,   14,   14,   14,   14,   14,   14,
-       14,   14,    1,    1,    1,    1,    1,    1,    1,    1,
+       10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
+       10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
+       10,   10,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -425,40 +424,38 @@ static yyconst YY_CHAR yy_ec[256] =
 
 static yyconst YY_CHAR yy_meta[16] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    2,    2,    1,
-        1,    3,    1,    4,    4
+        1,    1,    1,    1,    1,    1,    2,    1,    2,    2,
+        2,    2,    2,    2,    2
     } ;
 
-static yyconst flex_uint16_t yy_base[27] =
+static yyconst flex_uint16_t yy_base[22] =
     {   0,
-        0,    0,   31,   32,   32,   32,   32,   32,   32,   32,
-       32,   18,   32,    6,   32,    0,    5,   17,    9,    0,
-       16,   15,   14,   32,   19,   22
+        0,    0,   22,   23,   23,   23,   23,   23,   23,    9,
+        0,    7,    5,    0,    7,    2,    0,    0,    0,   23,
+       14
     } ;
 
-static yyconst flex_int16_t yy_def[27] =
+static yyconst flex_int16_t yy_def[22] =
     {   0,
-       24,    1,   24,   24,   24,   24,   24,   24,   24,   24,
-       24,   24,   24,   24,   24,   25,   24,   24,   24,   25,
-       26,   24,   24,    0,   24,   24
+       20,    1,   20,   20,   20,   20,   20,   20,   20,   21,
+       21,   21,   21,   21,   21,   21,   21,   21,   21,    0,
+       20
     } ;
 
-static yyconst flex_uint16_t yy_nxt[48] =
+static yyconst flex_uint16_t yy_nxt[39] =
     {   0,
-        4,    5,    4,    6,    7,    8,    9,   10,   11,   12,
-       13,   14,   15,   16,   16,   18,   17,   19,   18,   21,
-       19,   20,   20,   22,   22,   23,   23,   23,   17,   17,
-       24,    3,   24,   24,   24,   24,   24,   24,   24,   24,
-       24,   24,   24,   24,   24,   24,   24
+        4,    5,    4,    6,    7,    8,    4,    9,   10,   11,
+       11,   12,   13,   11,   11,   14,   19,   18,   17,   16,
+       15,   20,    3,   20,   20,   20,   20,   20,   20,   20,
+       20,   20,   20,   20,   20,   20,   20,   20
     } ;
 
-static yyconst flex_int16_t yy_chk[48] =
+static yyconst flex_int16_t yy_chk[39] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,   14,   17,   14,   19,   17,
-       19,   25,   25,   26,   26,   23,   22,   21,   18,   12,
-        3,   24,   24,   24,   24,   24,   24,   24,   24,   24,
-       24,   24,   24,   24,   24,   24,   24
+        1,    1,    1,    1,    1,   21,   16,   15,   13,   12,
+       10,    3,   20,   20,   20,   20,   20,   20,   20,   20,
+       20,   20,   20,   20,   20,   20,   20,   20
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -475,17 +472,17 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "numeric.l"
-#line 2 "numeric.l"
-	#include "numeric.h"
-	#include "y.tab.h"
-	#include <string.h>
-	#include<stdlib.h>
-	struct symtab *symbol_lookup(char *);
-	void tokenizer(char *);
-	extern void yyerror(char *);
-	extern char *token_string;
-#line 489 "lex.yy.c"
+#line 1 "logic.l"
+#line 2 "logic.l"
+#include<stdlib.h>
+#include<string.h>
+#include "logic.h"
+#include "y.tab.h"
+extern char *token_string;
+extern void yyerror(char*);
+void tokenize(char*);
+struct symtab *symbol_lookup(char*);
+#line 486 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -703,10 +700,9 @@ YY_DECL
 		}
 
 	{
-#line 15 "numeric.l"
+#line 14 "logic.l"
 
-
-#line 710 "lex.yy.c"
+#line 706 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -733,13 +729,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 25 )
+				if ( yy_current_state >= 21 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 32 );
+		while ( yy_base[yy_current_state] != 23 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -765,71 +761,89 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 17 "numeric.l"
-{yylval.number=strdup(yytext);tokenize("NUM");return NUM;}
+#line 15 "logic.l"
+{
+ yylval.operator=strdup(yytext);
+ tokenize(" AND ");
+ return AND;
+}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 18 "numeric.l"
-{yylval.symp=symbol_lookup(yytext);tokenize("ID");return ID;}
+#line 20 "logic.l"
+{
+ yylval.operator=strdup(yytext);
+ tokenize(" OR ");
+ return OR; 
+}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 20 "numeric.l"
-{yylval.operator=yytext[0];tokenize(" + ");return ADD;}
+#line 25 "logic.l"
+{
+ yylval.operator=strdup(yytext);
+ tokenize(" NOT ");
+ return NOT;
+}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 21 "numeric.l"
-{yylval.operator=yytext[0];tokenize(" - ");return SUB;}
+#line 30 "logic.l"
+{
+ yylval.symp=symbol_lookup(yytext);
+ tokenize("ID");
+ return ID;
+}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 22 "numeric.l"
-{yylval.operator=yytext[0];tokenize(" * ");return MUL;}
+#line 35 "logic.l"
+{
+ yylval.operator=strdup(yytext);
+ tokenize(" = ");
+ return ASSIGN;
+}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 23 "numeric.l"
-{yylval.operator=yytext[0];tokenize(" / ");return DIV;}
+#line 40 "logic.l"
+{
+ yylval.punctuation=strdup(yytext);
+ tokenize(" ( ");
+ return LEFT_P;
+}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 24 "numeric.l"
-{yylval.parenthesis=yytext[0];tokenize(" ( ");return LEFT_P;}
+#line 45 "logic.l"
+{
+ yylval.punctuation=strdup(yytext);
+ tokenize(" ) ");
+ return RIGHT_P;
+}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 25 "numeric.l"
-{yylval.parenthesis=yytext[0];tokenize(" ) ");return RIGHT_P;}
+#line 50 "logic.l"
+exit(0);
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 26 "numeric.l"
-{yylval.operator=yytext[0];tokenize(" () ");return ASSIGN;}
+#line 51 "logic.l"
+;
 	YY_BREAK
 case 10:
+/* rule 10 can match eol */
 YY_RULE_SETUP
-#line 27 "numeric.l"
-{exit(0);}
+#line 52 "logic.l"
+return yytext[0];
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 28 "numeric.l"
-{;}
-	YY_BREAK
-case 12:
-/* rule 12 can match eol */
-YY_RULE_SETUP
-#line 29 "numeric.l"
-{return yytext[0];}
-	YY_BREAK
-case 13:
-YY_RULE_SETUP
-#line 30 "numeric.l"
+#line 53 "logic.l"
 ECHO;
 	YY_BREAK
-#line 833 "lex.yy.c"
+#line 847 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1122,7 +1136,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 25 )
+			if ( yy_current_state >= 21 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1150,11 +1164,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 25 )
+		if ( yy_current_state >= 21 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 24);
+	yy_is_jam = (yy_current_state == 20);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1830,34 +1844,28 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 30 "numeric.l"
+#line 53 "logic.l"
 
-
-struct symtab *symbol_lookup(char *symbol){
-	struct symtab *sp;
-	for(sp=symbol_table ;s<&symbol_table[NSYS];sp++){
-		if(sp->name && !strcmp(sp->name,symbol))
-			return sp;
-		if(!sp->name){
-			sp->name=strcup(symbol);
-			return sp;
-		}
-	}
-	yyerror("Cannot find Symbol, exceeded!");
-	exit(1);
-}
 
 void tokenize(char *token){
-	if(!token_string){
-		token_string=strdup(token);
-	}
-	else{
-		char *temp;
-		temp=(char*)malloc((sizeof(char)*(strlen(token)+strlen(token_string)))+1);
-		strcpy(temp,token_string);
-		strcat(temp,token);
-		token_string=strdup(temp);
-		free(temp)
-	}
+ if(!token_string){
+  token_string=strdup(token);
+ }
+ else{
+  strcat(token_string,token);
+ }
+}
+struct symtab *symbol_lookup(char *symbol){
+ struct symtab *sp;
+ for(sp=symbol_table;sp< &symbol_table[S_SIZE];sp++){
+  if(sp->name && !strcmp(sp->name,symbol))
+   return sp;
+  if(!sp->name){
+   sp->name=strdup(symbol);
+   return sp;
+  }
+ }
+ yyerror("Cannot find symbol!");
+ exit(1);
 }
 
