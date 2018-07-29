@@ -51,7 +51,9 @@ extern int yydebug;
     ASSIGN = 261,
     LEFT_P = 262,
     RIGHT_P = 263,
-    ID = 264
+    TRUE = 264,
+    FALSE = 265,
+    ID = 266
   };
 #endif
 /* Tokens.  */
@@ -61,7 +63,9 @@ extern int yydebug;
 #define ASSIGN 261
 #define LEFT_P 262
 #define RIGHT_P 263
-#define ID 264
+#define TRUE 264
+#define FALSE 265
+#define ID 266
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -73,9 +77,10 @@ union YYSTYPE
  char *punctuation;
  char *operator;
  char *expr;
+ char *constant;
  struct symtab *symp;
 
-#line 79 "y.tab.h" /* yacc.c:1909  */
+#line 84 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

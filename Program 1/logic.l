@@ -27,6 +27,16 @@ id {letter}({letter}|{digit})*
  tokenize(" NOT ");
  return NOT;
 }
+"TRUE" { 
+ yylval.constant=strdup(yytext);
+ tokenize(" TRUE ");
+ return TRUE;
+}
+"FALSE" {
+ yylval.constant=strdup(yytext);
+ tokenize(" FALSE ");
+ return FALSE;
+}
 {id} {
  yylval.symp=symbol_lookup(yytext);
  tokenize("ID");

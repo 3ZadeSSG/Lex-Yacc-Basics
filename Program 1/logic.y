@@ -17,10 +17,12 @@ int temp_index=0;
  char *punctuation;
  char *operator;
  char *expr;
+ char *constant;
  struct symtab *symp;
 }
 %token <operator> AND OR NOT ASSIGN
 %token <punctuation> LEFT_P RIGHT_P
+%token <constant> TRUE FALSE
 %token <symp> ID
 %left AND
 %left OR
@@ -68,7 +70,13 @@ F: LEFT_P E RIGHT_P {
  strcat($$,$3);
 }
 | ID {
- $$=$1->name;
+  $$=$1->name;
+}
+| TRUE {
+ $$=" T ";
+}
+| FALSE {
+ $$=" F ";
 }
 ;
 %%
