@@ -95,7 +95,7 @@ void generate_3_IMC(char *result,char *operand_left,char *operators,char *operan
  tuples[t_index].operators=operators;
  t_index++;
 }
-int main(int *argc,char **argv){
+int main(void){
  yyparse();
  return 0;
 }
