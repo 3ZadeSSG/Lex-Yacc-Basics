@@ -1590,7 +1590,7 @@ void imc_code_generator(char *result,char *operand_left,char *operators,char *op
 void yyerror(char *s){
  fprintf(stderr,"%s\n",s);
 }
-int main(int *argc,char **argv){
+int main(void){
  yyparse();
  return 0;
 }

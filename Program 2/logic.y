@@ -75,13 +75,7 @@ void generate_3_IMC(char *result,char *operand_left,char *operators,char *operan
   tuples[t_index].operand_left=operand_left;
   tuples[t_index++].operand_right=operand_right;
 }
-int main(int *argc,char **argv){
+int main(void){
  yyparse();
  return 0;
 }
-
-
-
-
-
-
