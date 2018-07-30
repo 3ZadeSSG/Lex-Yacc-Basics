@@ -56,9 +56,11 @@ T: T LESS_THAN F {
 F: LEFT_P E RIGHT_P {
  strcpy($$,$2);
 }
-| NOT_EQUAL E {
- strcpy($$,"! ");
- strcat($$,$2);
+| NOT_EQUAL LEFT_P E RIGHT_P {
+ $$=new_temp();
+ generate_3_IMC("$$","","! ",$3);
+// strcpy($$,"! ");
+// strcat($$,$2);
 }
 | ID {
  $$=$1->name;
