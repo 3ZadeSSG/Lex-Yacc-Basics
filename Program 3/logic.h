@@ -1,13 +1,13 @@
 #define SIZE 1000
-struct symtab{
+typedef struct SYMTAB{
  char *name;
  char *value;
-};
-struct imcode{
+}symtab;
+typedef struct IMCODE{
  char *result;
  char *operators;
  char *operand_left;
  char *operand_right;
-};
-struct symtab symbol_table[SIZE];
-struct imcode tuples[SIZE];
+}imcode;
+symtab symbol_table[SIZE];
+imcode tuples[SIZE];
